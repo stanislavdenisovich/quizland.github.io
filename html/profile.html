@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Шрифт */
+            background-image: url(../image/2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Центрируем содержимое по горизонтали */
+            align-items: center; /* Центрируем содержимое по вертикали */
+            min-height: 100vh; /* Задаем минимальную высоту в 100% экрана */
+        }
+    
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #d6c8b6, #bda687, #a78c57); /* Темный песчаный градиент */
+            padding: 10px ; /* Отступы */
+            padding-right: 50px;
+            padding-left: 40px;
+            color: white; /* Цвет текста */
+            width: 100%; /* Ширина навигационной панели */
+            position: fixed; /* Фиксированное положение */
+            top: 0; /* Закрепляем панель вверху */
+            z-index: 1000; /* На переднем плане */
+            height: 50px;
+        }
+    
+        .navbar a {
+            max-width: 100%;
+            color: white; /* Цвет ссылок */
+            text-decoration: none; /* Убираем подчеркивание */
+            padding: 10px 15px; /* Отступы */
+            border-radius: 5px; /* Скругление углов */
+            transition: background-color 0.3s; /* Плавный переход */
+            text-shadow: 
+                2px 2px 0 rgba(0, 0, 0, 0.8),  /* Черная обводка */
+                2px 2px 5px rgba(0, 0, 0, 0.3); /* Легкая тень */
+            font-weight: bold;
+        }
+    
+        .navbar a:hover {
+            background-color: #555; /* Цвет фона при наведении */
+        }
+    
+        .navbar h2 {
+            margin: 0; /* Убираем отступы */
+            text-shadow: 
+                2px 2px 0 rgba(0, 0, 0, 0.8),  /* Черная обводка */
+                2px 2px 5px rgba(0, 0, 0, 0.3); /* Легкая тень */
+            font-weight: bold;
+        }
+    
+        .profile-container {
+    background-image: url('https://img.freepik.com/free-photo/elevated-view-burnt-paper-pen-ink-bottle_23-2147837106.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Добавлена тень */
+    margin-top: 80px; /* Отступ сверху для навигационной панели */
+    text-align: center;
+    width: 90%; /* 90% ширины экрана для мобильных */
+    max-width: 400px; /* Максимальная ширина */
+    transition: width 0.3s; /* Плавный переход ширины */
+    height: 1600px;
+}
+
+    
+        .profile-pic {
+            border-radius: 50%;
+            width: 200px; /* Увеличиваем размер аватара */
+            height: 200px;
+            margin-bottom: 10px;
+            border: 2px solid #343a40;
+        }
+    
+        .input-field {
+            margin: 10px 0;
+        }
+    
+        .input-field input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+    
+        .input-field input:focus {
+            border-color: #343a40; /* Изменяем цвет границы при фокусе */
+            outline: none;
+        }
+    
+        .save-btn, .edit-btn {
+    background: linear-gradient(135deg, #f2e6d9, #e0c6a4, #d1a86c);
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s, transform 0.2s; /* Плавный переход для фона и эффекта при наведении */
+    font-size: 16px; /* Размер шрифта */
+    font-weight: 600; /* Жирное начертание */
+    letter-spacing: 1px; /* Увеличение межбуквенного интервала */
+    }
+
+    .save-btn:hover, .edit-btn:hover {
+    background: linear-gradient(135deg, #d6c8b6, #bda687, #a78c57); /* Темный песчаный градиент */
+    transform: translateY(-2px); /* Подъем кнопки при наведении */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень для кнопки при наведении */
+    }
+
+    
+        .hidden {
+            display: none; /* Скрытие элемента */
+        }
+    
+        .output {
+            margin-top: 20px;
+        }
+    
+        h3 {
+        margin: 10px 0;
+        font-size: 24px; /* Размер шрифта */
+        font-weight: bold; /* Жирный текст */
+        color: #343a40; /* Цвет текста */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Тень текста */
+        padding: 10px; /* Отступы вокруг текста */
+        border-radius: 5px; /* Скругление углов */
+        background: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
+        transition: transform 0.3s; /* Плавный переход для эффекта при наведении */
+        }
+
+h3:hover {
+    transform: translateY(-2px); /* Подъем текста при наведении */
+}
+.achievement-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
+    border-radius: 10px; /* Скругление углов */
+    padding: 10px 15px; /* Отступы внутри контейнера */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Тень для объема */
+    display: flex; /* Flexbox для выравнивания */
+    align-items: center; /* Центрируем по вертикали */
+    margin-top: 20px; /* Отступ сверху */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.achievement-container:hover {
+    transform: translateY(-2px); /* Подъем текста при наведении */
+}
+
+#achievement-display {
+    display: inline-block; /* Делаем элемент блочным для правильного выравнивания */
+    vertical-align: middle; /* Выравнивание по центру по вертикали */
+    font-size: 18px; /* Размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    margin-right: 10px; /* Отступ справа от текста */
+    color: #333; /* Цвет текста */
+}
+
+#medal-icon {
+    display: inline-block; /* Делаем изображение блочным для правильного выравнивания */
+    vertical-align: middle; /* Выравнивание по центру по вертикали */
+}
+.achievement-container {
+    display: flex;
+    flex-direction: column; /* Устанавливаем вертикальное направление для элементов */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    border-radius: 10px; /* Скругляем углы */
+    padding: 20px; /* Отступы внутри контейнера */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Тень для объема */
+}
+
+#achievement-display {
+    margin-bottom: 10px; /* Отступ снизу для текста достижений */
+}
+
+#medal-icon {
+    margin-bottom: 10px; /* Отступ снизу для иконки медали */
+}
+
+#achievement-photo {
+    width: 150px; /* Задайте желаемую ширину */
+    height: auto; /* Высота автоматически сохраняет пропорции */
+    object-fit: cover; /* Обрезка изображения для сохранения пропорций */
+}
+
+
+.achievement-container {
+    display: flex;
+    flex-direction: column; /* Устанавливаем вертикальное направление для элементов */
+    align-items: center; /* Центрируем элементы по горизонтали */
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    border-radius: 10px; /* Скругляем углы */
+    padding: 20px; /* Отступы внутри контейнера */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Тень для объема */
+}
+
+.achievement-container1 {
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */            border-radius: 15px; /* Закругление углов */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта глубины */
+            padding: 10px; /* Внутренние отступы */
+            padding-top: 10px;
+            text-align: center; /* Центрирование текста */
+            max-width: 300px; /* Максимальная ширина контейнера */
+            margin: 20px auto; /* Центрирование контейнера на странице */
+        }
+
+        .achievement-row {
+            display: flex;
+            align-items: center; /* Выравнивание по вертикали */
+            justify-content: center; /* Центрирование по горизонтали */
+            margin-bottom: 20px; /* Отступ снизу */
+        }
+
+        #achievement-display {
+            font-size: 24px; /* Размер текста */
+            font-weight: bold; /* Жирный шрифт */
+            margin-right: 10px; /* Отступ между текстом и медалью */
+        }
+
+        #medal-icon {
+            width: 40px; /* Ширина иконки медали */
+            height: auto; /* Автоматическая высота для сохранения пропорций */
+        }
+
+#medal-icon {
+    width: 30px; /* Устанавливаем ширину иконки медали */
+    height: 30px; /* Устанавливаем высоту иконки медали */
+}
+
+#achievement-photo {
+    width: 150px; /* Задайте желаемую ширину */
+    height: auto; /* Высота автоматически сохраняет пропорции */
+    object-fit: cover; /* Обрезка изображения для сохранения пропорций */
+}
+#achievement-image {
+    border-radius: 20%;
+    width: 200px; /* Установите нужную ширину */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    display: block; /* Обеспечивает блоковое отображение */
+    margin: 10px auto; /* Центрирует изображение по горизонтали */
+}
+#achievement-image-2 {
+    border-radius: 20%;
+    width: 200px; /* Установите нужную ширину */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    display: block; /* Обеспечивает блоковое отображение */
+    margin: 10px auto; /* Центрирует изображение по горизонтали */
+}
+#achievement-image-3 {
+    border-radius: 20%;
+    width: 200px; /* Установите нужную ширину */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    display: block; /* Обеспечивает блоковое отображение */
+    margin: 10px auto; /* Центрирует изображение по горизонтали */
+}
+
+    
+        /* Адаптивные стили */
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 10px; /* Уменьшаем отступы для маленьких экранов */
+            }
+    
+            .profile-container {
+                padding: 20px; /* Уменьшаем внутренние отступы для маленьких экранов */
+            }
+    
+            .profile-pic {
+                width: 150px; /* Уменьшаем размер аватара для маленьких экранов */
+                height: 150px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html">На главную</a> <!-- Ссылка на главную страницу -->
+        <h2>Профиль</h2>
+    </div>
+    <div class="profile-container">
+        <img id="profile-pic" class="profile-pic" src="../image/default-avatar.png" alt="Аватар">
+        <div class="input-field" id="input-fields">
+            <input type="file" id="avatar-input" accept="image/*">
+            <input type="text" id="username" placeholder="Введите ваше имя" required>
+            <button class="save-btn" id="save-btn">Сохранить</button>
+        </div>
+        <div id="output" class="output hidden">
+            <h3>Ваше имя: <span id="display-username"></span></h3>
+            <button class="edit-btn hidden" id="edit-btn">Изменить данные</button>
+        </div>
+
+
+
+<div class="achievement-container1">
+
+        <div class="achievement-row">
+            <span id="achievement-display">Достижения: 0</span>
+                <img id="medal-icon" src="../image/medal.png" alt="Медаль">
+        </div>
+
+</div>
+
+<div class="achievement-container">
+        <img id="achievement-image" src="" alt="Достижения">
+        <h3>Набери 4 достижения и открой фото!</h3>
+</div>
+    <div class="achievement-container">
+        <img id="achievement-image-2" src="" alt="Достижения">
+        <h3>Набери 8 достижения и открой фото!</h3>
+</div>
+    <div class="achievement-container">
+        <img id="achievement-image-3" src="" alt="Достижения">
+        <h3>Набери 12 достижения и открой фото!</h3>
+</div>
+
+
+    <script src="../scripts/profile.js"></script>
+    <script>
+        // Загрузка данных из localStorage при загрузке страницы
+        window.onload = function() {
+            const savedUsername = localStorage.getItem('username');
+            const savedAvatar = localStorage.getItem('avatar');
+
+            if (savedUsername) {
+                document.getElementById('username').value = savedUsername;
+                document.getElementById('display-username').textContent = savedUsername;
+                // Скрываем поля ввода и кнопку, если имя уже сохранено
+                document.getElementById('input-fields').classList.add('hidden');
+                document.getElementById('output').classList.remove('hidden');
+                document.getElementById('edit-btn').classList.remove('hidden'); // Показываем кнопку "Изменить данные"
+            }
+
+            if (savedAvatar) {
+                document.getElementById('profile-pic').src = savedAvatar;
+            }
+        };
+
+        // Сохранение имени и аватара
+        document.getElementById('save-btn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const avatarInput = document.getElementById('avatar-input');
+            let avatar;
+
+            // Проверяем, загружен ли файл
+            if (avatarInput.files.length > 0) {
+                const file = avatarInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    avatar = e.target.result;
+                    localStorage.setItem('avatar', avatar);
+                    document.getElementById('profile-pic').src = avatar;
+                };
+
+                reader.readAsDataURL(file);
+            }
+
+            localStorage.setItem('username', username);
+            document.getElementById('display-username').textContent = username;
+
+            // Скрываем поля ввода и кнопку
+            document.getElementById('input-fields').classList.add('hidden');
+            document.getElementById('output').classList.remove('hidden');
+            document.getElementById('edit-btn').classList.remove('hidden'); // Показываем кнопку "Изменить данные"
+        });
+
+        // Функция для редактирования данных
+        document.getElementById('edit-btn').addEventListener('click', function() {
+            document.getElementById('input-fields').classList.remove('hidden'); // Показываем поля ввода
+            document.getElementById('output').classList.add('hidden'); // Скрываем имя и аватар
+            document.getElementById('edit-btn').classList.add('hidden'); // Скрываем кнопку "Изменить данные"
+            document.getElementById('username').value = ''; // Очищаем поле ввода
+            document.getElementById('profile-pic').src = '../image/default-avatar.png'; // Сбрасываем аватар
+        });
+
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const achievementCount = localStorage.getItem('achievementCount') || 0; 
+            console.log('Achievement Count:', achievementCount); // Для отладки
+            const achievementDisplay = document.getElementById('achievement-display');
+            const achievementImage = document.getElementById('achievement-image');
+            const achievementImage2 = document.getElementById('achievement-image-2');
+            const achievementImage3 = document.getElementById('achievement-image-3');
+
+            // Обновляем текст достижений
+            achievementDisplay.textContent = `Достижения: ${achievementCount}`; 
+
+            // Меняем изображение в зависимости от количества достижений
+            if (achievementCount >= 4) {
+                achievementImage.src = '../image/6.jpg';
+            } else {
+                achievementImage.src = '../image/1.avif';
+            }
+
+            if (achievementCount >= 8) {
+                achievementImage2.src = '../image/7.jpg';
+            } else {
+                achievementImage2.src = '../image/1.avif';
+            }
+
+            if (achievementCount >= 12) {
+                achievementImage3.src = '../image/8.jpg';
+            } else {
+                achievementImage3.src = '../image/1.avif';
+            }
+        });
+
+        // Пример обновления достижений
+        function updateAchievements(newCount) {
+            localStorage.setItem('achievementCount', newCount);
+            location.reload(); // Перезагружаем страницу, чтобы отобразить новое значение
+        }
+
+
+    </script>
+</body>
+</html>

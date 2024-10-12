@@ -1,0 +1,30 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #d6c8b6, #bda687, #a78c57); /* Темный песчаный градиент */
+    padding: 10px 20px; /* Отступы */
+    color: white; /* Цвет текста */
+}
+.navbar a {
+    color: white; /* Цвет ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    padding: 10px 15px; /* Отступы */
+    border-radius: 5px; /* Скругление углов */
+    transition: background-color 0.3s; /* Плавный переход */
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.8),  /* Черная обводка */
+        2px 2px 5px rgba(0, 0, 0, 0.3); /* Легкая тень */
+    font-weight: bold;
+}
+.navbar a:hover {
+    background-color: #555; /* Цвет фона при наведении */
+}
+.navbar img {
+    height: 40px; /* Высота логотипа */
+}
+img {
+    border-radius: 50%;
+}
+
+

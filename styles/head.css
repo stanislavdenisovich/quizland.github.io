@@ -1,0 +1,207 @@
+body {
+    background-image: url(../image/2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    font-family: 'Arial', sans-serif;
+}
+
+.background {
+    background: url('https://images.unsplash.com/photo-1604164782226-80e3f7e2e6cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-4.0.3&q=80&w=1920') no-repeat center center fixed; 
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: brightness(0.7);
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    margin: 100px auto; /* Уменьшаем отступы */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    animation: slide-up 0.5s ease-in-out;
+    position: relative; /* Устанавливаем позицию для контейнеров */
+}
+
+.history {
+    background-image: url('https://www.caa-network.org/wp-content/uploads/2017/09/Kazakh_khandigi.jpg'); /* Замените на ваше изображение */
+    background-size: cover;
+    background-position: center;
+    color: white; /* Цвет текста для лучшей видимости */
+}
+
+.vsi {
+    background-image: url('https://quizizz.com/media/resource/gs/quizizz-media/quizzes/b8f96ae8-ad86-4cf7-9e98-d67739baa54b'); /* Замените на ваше изображение */
+    background-size: cover;
+    background-position: center;
+    color: white; /* Цвет текста для лучшей видимости */
+}
+.osn {
+    background-image: url('https://study.shmat.by/wp-content/uploads/sites/5/2019/10/20191006-osnprava-600.jpg'); /* Замените на ваше изображение */
+    background-size: cover;
+    background-position: center;
+    color: white; /* Цвет текста для лучшей видимости */
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.quiz-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quiz-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 20px;
+    color: #000000;
+    background: linear-gradient(135deg, #f2e6d9, #e0c6a4, #d1a86c);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    animation: bounce 1s infinite alternate;
+}
+
+.quiz-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.quiz-button:active {
+    transform: scale(0.95);
+}
+
+/* Анимации */
+.fade-in {
+    animation: fade-in 1s forwards;
+}
+
+.slide-in {
+    animation: slide-in 1s forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+.hhh {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.8),  /* Черная обводка */
+        2px 2px 5px rgba(0, 0, 0, 0.3); /* Легкая тень */
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff; /* Цвет текста */
+    transition: text-shadow 0.3s ease; /* Плавный переход для обводки при наведении */
+}
+
+.hhh:hover {
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.8),  /* Черная обводка */
+        0 0 10px rgba(255, 255, 255, 0.7); /* Светящаяся тень при наведении */
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 18px;
+    }
+    .quiz-button {
+        padding: 12px 20px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        height: 2000px;
+        background-image: url(../image/2.jpg);
+    }
+    .container {
+        width: 90%;
+        padding: 5px;
+        margin-left: 15px;
+        margin-top: 80px;
+        max-width: 100%;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    p {
+        font-size: 16px;
+    }
+    .quiz-button {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+    .hhh {
+        font-size: 24px;
+    }
+}

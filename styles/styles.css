@@ -1,0 +1,336 @@
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #282c34; Темный фон */
+    background-image: url(../image/2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff; /* Белый текст */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+#quiz-container, #result-container {
+    margin-left: 75px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f2e6d9, #e0c6a4, #d1a86c);  /* Градиент для контейнеров */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+#quiz-container.show, #result-container.show {
+    opacity: 1;
+}
+#question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+.option-button {
+    background: linear-gradient(135deg, #d6c8b6, #bda687, #a78c57); /* Темный песчаный градиент */
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1em;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Анимация изменения фона */
+}
+.option-button:hover {
+    background: linear-gradient(135deg, #d6c8b6, #bda687, #a78c57); /* Темный песчаный градиент */
+    transform: translateY(-2px); /* Легкий подъем кнопки */
+}
+#next-btn {
+    background-color: #ffcc00; /* Желтая кнопка */
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2em;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: none; /* Изначально скрыта */
+}
+#next-btn:hover {
+    background-color: #e6b800; /* Более темный оттенок при наведении */
+    transform: translateY(-2px);
+}
+#timer {
+    font-size: 1.9em;
+    margin-bottom: 20px;
+}
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-image: url('https://www.caa-network.org/wp-content/uploads/2017/09/Kazakh_khandigi.jpg'); /* Замените на ваше изображение */
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    text-align: center;
+    color: #ffffff; /* Белый цвет текста внутри контейнера */
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.8),  /* Черная обводка */
+        2px 2px 5px rgba(0, 0, 0, 0.3); /* Легкая тень */
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffffff; /* Цвет текста */
+    transition: text-shadow 0.3s ease; /* Плавный переход для обводки при наведении */
+}
+
+h2:hover {
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.8),  /* Черная обводка */
+        0 0 10px rgba(255, 255, 255, 0.7); /* Светящаяся тень при наведении */
+}
+/* Стартовое окно */
+#start-container {
+    transition: opacity 0.5s ease-in-out;
+}
+button {
+    color: #000000;
+    background: linear-gradient(135deg, #f2e6d9, #e0c6a4, #d1a86c);  
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px; /* Увеличенный размер шрифта для большей читаемости */
+    cursor: pointer;
+    border-radius: 50px; /* Округлые углы */
+    transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Плавная анимация */
+    margin: 20px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Более глубокая тень */
+    outline: none; /* Убираем контур при фокусе */
+}
+button:hover {
+    background: linear-gradient(135deg, #d6c8b6, #bda687, #a78c57); /* Темный песчаный градиент */
+    transform: translateY(-3px); /* Легкий подъем кнопки при наведении */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Увеличенная тень при наведении */
+}
+button:active {
+    transform: translateY(1px); /* Небольшое движение вниз при нажатии */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Восстанавливаем тень */
+}
+a {
+    text-decoration: none;
+    padding: 15px 30px;
+    font-size: 20px; /* Увеличенный размер шрифта для большей читаемости */
+    color: black;
+}
+/* Контейнер с вопросами */
+#quiz-container, #result-container {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.5s ease-in-out;
+}
+#question {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+#options {
+    margin-top: 20px;
+}
+#options div {
+    margin: 15px 0;
+}
+input[type="checkbox"], input[type="radio"] {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+label {
+    font-size: 20px;
+}
+#timer {
+    font-size: 26px;
+    margin-top: 20px;
+    color: #ff0000;
+    font-weight: bold;
+}
+#next-btn {
+    margin-top: 20px;
+}
+/* Стиль для результатов */
+#result {
+    font-size: 22px;
+    color: #1abc9c;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    button {
+        width: 100%;
+        font-size: 16px;
+    }
+    h2 {
+        font-size: 26px;
+    }
+    #timer {
+        font-size: 16px;
+    }
+}
+.option-button {
+    background: linear-gradient(135deg, #d6c8b6, #bda687, #a78c57); /* Темный песчаный градиент */
+    border: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Занимает всю ширину родителя */
+}
+.option-button:hover {
+    background: linear-gradient(135deg, #d6c8b6, #bda687, #a78c57); /* Темный песчаный градиент */
+    transform: translateY(-2px);
+}
+.option-button.selected {
+    background: #27ae60; /* Цвет для выделенных кнопок */
+}
+#exit-btn {
+    background: linear-gradient(135deg, #e74c3c, #c0392b); /* Градиентный фон с красным */
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px; /* Округлые углы */
+    transition: background 0.4s ease, transform 0.3s ease;
+    margin-top: 20px; /* Отступ сверху */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+#exit-btn:hover {
+    background: linear-gradient(135deg, #c0392b, #e74c3c); /* Изменение цвета при наведении */
+    transform: translateY(-3px); /* Легкий подъем кнопки при наведении */
+}
+#exit-btn:active {
+    transform: translateY(1px); /* Небольшое движение вниз при нажатии */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+/* Стили для устройств с шириной экрана меньше 480px */
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+        margin-left: 20px;
+        margin-right: 20px;
+        max-width: 100%; /* Убираем фиксированную ширину */
+    }
+    h2 {
+        font-size: 22px; /* Уменьшаем размер шрифта */
+    }
+    button {
+        width: 100%; /* Кнопки на всю ширину */
+        font-size: 14px; /* Уменьшение размера текста на кнопках */
+        padding: 10px; /* Меньше отступов для экономии места */
+    }
+    a {
+        width: 100px; /* Кнопки на всю ширину */
+        font-size: 14px; /* Уменьшение размера текста на кнопках */
+        padding: 10px; /* Меньше отступов для экономии места */
+    }
+    #quiz-container, #result-container {
+        width: 100%;
+        margin-left: -20px;
+    }
+    #question {
+        font-size: 20px;
+    }
+    .option-button {
+        font-size: 16px; /* Уменьшаем размер шрифта на кнопках */
+        padding: 10px; /* Меньшие отступы */
+    }
+    #timer {
+        font-size: 14px; /* Уменьшение шрифта таймера для экономии места */
+    }
+    #result {
+        font-size: 18px; /* Уменьшаем шрифт для результата */
+    }
+}
+/* Дополнительные стили для устройств с шириной экрана до 768px */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        max-width: 90%; /* Более гибкая ширина */
+    }
+    button {
+        width: 100%; /* Кнопки на всю ширину */
+        font-size: 16px; /* Уменьшенный размер текста на кнопках */
+    }
+    h2 {
+        font-size: 26px; /* Меньше текст заголовка */
+    }
+    #timer {
+        font-size: 18px;
+    }
+    .option-button {
+        font-size: 18px;
+        padding: 12px; /* Уменьшенные отступы на кнопках */
+    }
+}
+/* Стиль для сообщения о правильности ответа */
+#answer-feedback {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    display: none;
+    text-align: center;
+}
+.correct {
+    background-color: #4CAF50; /* Зеленый цвет для правильного ответа */
+    color: white;
+}
+.incorrect {
+    background-color: #f44336; /* Красный цвет для неправильного ответа */
+    color: white;
+}
+.correct-answer-list {
+    margin-top: 20px;
+    max-height: 300px; /* Ограничиваем высоту списка правильных ответов */
+    overflow-y: auto;  /* Добавляем вертикальную прокрутку, если список длинный */
+    padding-right: 10px; /* Добавляем отступ для прокрутки */
+}
+.correct-answer-list h3 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem; /* Уменьшаем размер заголовка */
+}
+.correct-answer-list ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1rem; /* Уменьшаем размер текста */
+}
+.correct-answer-list ul li {
+    background-color: #f2f2f2;
+    margin: 10px 0;
+    padding: 8px; /* Уменьшаем отступы для каждого элемента списка */
+    border-radius: 5px;
+}
+.correct-answer-list ul li span {
+    font-weight: bold;
+}
+.correct-answer-list ul li.correct {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+

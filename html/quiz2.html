@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Современная Викторина</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+.achievement-overlay {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Более плотное затемнение фона */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    z-index: 1000; /* Убедитесь, что это поверх других элементов */
+}
+
+.achievement {
+    text-align: center;
+    color: white; /* Белый цвет текста */
+    display: flex;
+    flex-direction: column; /* Вертикальное выравнивание */
+    justify-content: center; /* Центрируем по вертикали */
+    align-items: center; /* Центрируем по горизонтали */
+}
+
+#medal {
+    margin-top: 300px;
+    width: 300px; /* Увеличьте размер медали */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    animation: scaleUp 0.5s forwards; /* Добавляем анимацию увеличения */
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#achievement-text {
+    font-size: 36px; /* Увеличьте размер текста достижения */
+    margin-top: 20px;
+}
+
+#close-btn {
+    background-color: #f44336; /* Красный цвет для кнопки закрытия */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+@media (max-width: 768px) {
+    #medal {
+        width: 70%; /* Ширина медали для мобильных устройств */
+    }
+    
+    #achievement-text {
+        font-size: 20px; /* Уменьшаем размер шрифта для текста достижения */
+    }
+    
+    #close-btn {
+        padding: 8px 16px; /* Уменьшаем отступы кнопки закрытия */
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="start-container">
+            <h2>Добро пожаловать в Викторину по Истории Казакстана!</h2>
+            <h2>ИК вторая 25</h2>
+            <button id="start-btn">Начать</button>
+            <button><a class="exit" href="../index.html">Выйти</a></button>
+        </div>
+        <div id="quiz-container" style="display:none;">
+            <div id="question-number"></div>
+            <h2 id="question"></h2>
+            <div id="options"></div>
+            <p id="timer"></p>
+            <p id="answer-feedback"></p>
+            <button id="next-btn" style="display: none;">Следующий вопрос</button>
+        </div>
+        
+        <div id="achievement" class="achievement-overlay">
+            <div class="achievement">
+                <img id="medal" src="../image/medal.png" alt="Медаль">
+                <div id="achievement-text">Вы прошли идеально!</div>
+                <button id="close-btn">Закрыть</button> <!-- Кнопка закрытия -->
+            </div>
+        </div>
+
+        <div id="result-container" style="display:none;">
+            <h2>Ваш результат</h2>
+            <p id="result"></p>
+            <div class="correct-answer-list" id="correct-answers">
+                <h3>Правильные ответы</h3>
+                <ul id="answers-list"></ul>
+            </div>
+            <button id="exit-btn">Выйти</button>
+        </div>
+        
+    </div>
+    <script src="../scripts/script1.js"></script>
+</body>
+</html>
